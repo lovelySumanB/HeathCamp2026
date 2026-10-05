@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Participant Registration | HealthCamp 2026</title>
+  <meta name="description" content="Register for Community Health & Wellness Camp 2026. Secure your free appointment slot for comprehensive health screenings.">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Navigation Bar
+       ========================================================================== -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="./index.html">
+          <div class="brand-icon-wrapper">
+            <i class="bi bi-hospital"></i>
+          </div>
+          <div>
+            <span>HealthCamp<span class="text-primary">2026</span></span>
+            <div style="font-size: 0.68rem; font-weight: 500; color: #64748b; line-height: 1;">Community Wellness Initiative</div>
+          </div>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarRegister" aria-controls="navbarRegister" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarRegister">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html"><i class="bi bi-house-door me-1"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html#camp-details"><i class="bi bi-info-circle me-1"></i>Camp Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html#services"><i class="bi bi-heart-pulse me-1"></i>Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="./register.html"><i class="bi bi-pencil-square me-1"></i>Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./lookup.html"><i class="bi bi-search me-1"></i>Check Registration</a>
+            </li>
+            <li class="nav-item ms-lg-1">
+              <a class="btn nav-btn-admin btn-sm px-3 py-2" href="./admin.html">
+                <i class="bi bi-shield-lock me-1"></i>Admin Portal
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="py-5">
+    <div class="container">
+      <!-- Breadcrumb & Header -->
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-10">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb small">
+              <li class="breadcrumb-item"><a href="./index.html" class="text-decoration-none">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Participant Registration</li>
+            </ol>
+          </nav>
+          <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+            <div>
+              <h1 class="h2 fw-bold text-dark mb-1">Health Camp Registration</h1>
+              <p class="text-muted mb-0">Fill out the form below to secure your free appointment slot. All fields marked with <span class="text-danger">*</span> are required.</p>
+            </div>
+            <div>
+              <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill">
+                <i class="bi bi-calendar-event me-1"></i>Nov 15 – 17, 2026
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Registration Form Container -->
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          
+          <!-- Duplicate Warning / System Alerts Container -->
+          <div id="formAlertContainer"></div>
+
+          <div class="form-card">
+            <form id="registrationForm" novalidate>
+              
+              <!-- ================================================================
+                   Section 1: Personal Information
+                   ================================================================ -->
+              <div class="form-section-title">
+                <i class="bi bi-person-lines-fill text-primary"></i>
+                <span>1. Personal Information</span>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <!-- Full Name -->
+                <div class="col-md-6">
+                  <label for="fullName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="fullName" placeholder="e.g. Johnathan Doe" required>
+                  <div class="invalid-feedback" id="fullNameFeedback">Please enter a valid full name (minimum 2 characters, letters only).</div>
+                  <div class="valid-feedback">Looks good!</div>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="col-md-3">
+                  <label for="dateOfBirth" class="form-label">Date of Birth <span class="text-danger">*</span></label>
+                  <input type="date" class="form-control" id="dateOfBirth" required>
+                  <div class="invalid-feedback" id="dobFeedback">Please select a valid date of birth (cannot be future date).</div>
+                </div>
+
+                <!-- Age -->
+                <div class="col-md-3">
+                  <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                  <input type="number" class="form-control" id="age" min="1" max="120" placeholder="Years" required>
+                  <div class="invalid-feedback" id="ageFeedback">Please enter a valid age (1 - 120).</div>
+                </div>
+
+                <!-- Gender -->
+                <div class="col-md-4">
+                  <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+                  <select class="form-select" id="gender" required>
+                    <option value="" selected disabled>Select gender...</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                  </select>
+                  <div class="invalid-feedback">Please select your gender.</div>
+                </div>
+
+                <!-- Mobile Number -->
+                <div class="col-md-4">
+                  <label for="mobile" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light text-muted"><i class="bi bi-phone"></i></span>
+                    <input type="tel" class="form-control" id="mobile" placeholder="10-digit mobile number" maxlength="10" required>
+                  </div>
+                  <div class="invalid-feedback" id="mobileFeedback">Please enter a valid 10-digit mobile number.</div>
+                </div>
+
+                <!-- Email Address -->
+                <div class="col-md-4">
+                  <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light text-muted"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                  </div>
+                  <div class="invalid-feedback" id="emailFeedback">Please enter a valid email address.</div>
+                </div>
+
+                <!-- Address -->
+                <div class="col-md-6">
+                  <label for="address" class="form-label">Residential Address <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="address" placeholder="House no, Street name, Area" required>
+                  <div class="invalid-feedback">Please enter your residential address.</div>
+                </div>
+
+                <!-- City -->
+                <div class="col-md-3">
+                  <label for="city" class="form-label">City / Town <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="city" placeholder="e.g. Metro City" required>
+                  <div class="invalid-feedback">Please enter your city.</div>
+                </div>
+
+                <!-- Emergency Contact Number -->
+                <div class="col-md-3">
+                  <label for="emergencyContact" class="form-label">Emergency Contact <span class="text-danger">*</span></label>
+                  <input type="tel" class="form-control" id="emergencyContact" placeholder="10-digit number" maxlength="10" required>
+                  <div class="invalid-feedback" id="emergencyContactFeedback">Enter a valid 10-digit emergency contact number.</div>
+                </div>
+              </div>
+
+
+              <!-- ================================================================
+                   Section 2: Health Information
+                   ================================================================ -->
+              <div class="form-section-title mt-4">
+                <i class="bi bi-heart-pulse-fill text-danger"></i>
+                <span>2. Health Information</span>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <!-- Blood Group -->
+                <div class="col-md-4">
+                  <label for="bloodGroup" class="form-label">Blood Group <span class="text-danger">*</span></label>
+                  <select class="form-select" id="bloodGroup" required>
+                    <option value="" selected disabled>Select blood group...</option>
+                    <option value="A+">A+ (A Positive)</option>
+                    <option value="A-">A- (A Negative)</option>
+                    <option value="B+">B+ (B Positive)</option>
+                    <option value="B-">B- (B Negative)</option>
+                    <option value="AB+">AB+ (AB Positive)</option>
+                    <option value="AB-">AB- (AB Negative)</option>
+                    <option value="O+">O+ (O Positive)</option>
+                    <option value="O-">O- (O Negative)</option>
+                    <option value="Unknown">Don't know / Not sure</option>
+                  </select>
+                  <div class="invalid-feedback">Please select your blood group or choose 'Don't know'.</div>
+                </div>
+
+                <!-- Preferred Checkup Service -->
+                <div class="col-md-8">
+                  <label for="preferredCheckup" class="form-label">Primary Checkup Service <span class="text-danger">*</span></label>
+                  <select class="form-select" id="preferredCheckup" required>
+                    <option value="" selected disabled>Select primary service...</option>
+                    <option value="General Health Checkup">General Health Checkup (Full physical &amp; vitals)</option>
+                    <option value="Blood Pressure Check">Blood Pressure &amp; Cardiovascular Check</option>
+                    <option value="Blood Sugar Test">Blood Sugar &amp; Diabetes Test</option>
+                    <option value="BMI Check">BMI &amp; Body Composition Analysis</option>
+                    <option value="Eye Checkup">Eye Checkup &amp; Vision Testing</option>
+                    <option value="Dental Checkup">Dental Examination &amp; Oral Hygiene</option>
+                    <option value="Nutrition Consultation">Nutrition &amp; Personalized Diet Consultation</option>
+                    <option value="Doctor Consultation">Specialist Doctor Consultation</option>
+                  </select>
+                  <div class="invalid-feedback">Please select your preferred health checkup service.</div>
+                </div>
+
+                <!-- Existing Medical Conditions -->
+                <div class="col-md-6">
+                  <label for="medicalConditions" class="form-label">Existing Medical Conditions</label>
+                  <input type="text" class="form-control" id="medicalConditions" placeholder="e.g. Diabetes, Hypertension, Asthma (or 'None')">
+                  <div class="form-text">List any chronic or diagnosed health conditions.</div>
+                </div>
+
+                <!-- Allergies -->
+                <div class="col-md-6">
+                  <label for="allergies" class="form-label">Known Allergies</label>
+                  <input type="text" class="form-control" id="allergies" placeholder="e.g. Penicillin, Peanuts, Pollen (or 'None')">
+                  <div class="form-text">List any drug, food, or seasonal allergies.</div>
+                </div>
+
+                <!-- Current Medications -->
+                <div class="col-md-6">
+                  <label for="medications" class="form-label">Current Medications</label>
+                  <input type="text" class="form-control" id="medications" placeholder="e.g. Metformin 500mg, Inhaler (or 'None')">
+                  <div class="form-text">Medicines you take regularly.</div>
+                </div>
+
+                <!-- Additional Health Concerns -->
+                <div class="col-md-6">
+                  <label for="healthConcerns" class="form-label">Any Additional Health Concerns</label>
+                  <input type="text" class="form-control" id="healthConcerns" placeholder="e.g. Frequent headaches, knee pain, fatigue">
+                  <div class="form-text">Briefly mention symptoms you wish to discuss with the doctor.</div>
+                </div>
+              </div>
+
+
+              <!-- ================================================================
+                   Section 3: Appointment Information
+                   ================================================================ -->
+              <div class="form-section-title mt-4">
+                <i class="bi bi-calendar-check-fill text-success"></i>
+                <span>3. Appointment Slot &amp; Scheduling</span>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <!-- Preferred Date -->
+                <div class="col-md-6">
+                  <label for="preferredDate" class="form-label">Preferred Camp Date <span class="text-danger">*</span></label>
+                  <select class="form-select" id="preferredDate" required>
+                    <option value="" selected disabled>Select date...</option>
+                    <option value="2026-11-15">Nov 15, 2026 (Day 1 - Saturday)</option>
+                    <option value="2026-11-16">Nov 16, 2026 (Day 2 - Sunday)</option>
+                    <option value="2026-11-17">Nov 17, 2026 (Day 3 - Monday)</option>
+                  </select>
+                  <div class="invalid-feedback">Please select your preferred camp date.</div>
+                </div>
+
+                <!-- Preferred Time Slot -->
+                <div class="col-md-6">
+                  <label for="preferredTime" class="form-label">
+                    Preferred Time Slot <span class="text-danger">*</span>
+                    <span id="slotCapacityNotice" class="badge bg-secondary-subtle text-secondary ms-1">Choose date first</span>
+                  </label>
+                  <select class="form-select" id="preferredTime" required disabled>
+                    <option value="" selected disabled>Select date first to view slots...</option>
+                  </select>
+                  <div class="invalid-feedback" id="slotFeedback">Please select an available time slot.</div>
+                </div>
+
+                <!-- Reason for Visit -->
+                <div class="col-12">
+                  <label for="reason" class="form-label">Reason for Visit <span class="text-danger">*</span></label>
+                  <textarea class="form-control" id="reason" rows="2" placeholder="e.g. Regular annual health checkup, experiencing joint stiffness, sugar level monitoring..." required></textarea>
+                  <div class="invalid-feedback">Please specify your primary reason for visiting the camp.</div>
+                </div>
+              </div>
+
+
+              <!-- ================================================================
+                   Section 4: Consent & Declaration
+                   ================================================================ -->
+              <div class="form-section-title mt-4">
+                <i class="bi bi-shield-check text-info"></i>
+                <span>4. Consent &amp; Declaration</span>
+              </div>
+
+              <div class="p-3 rounded-3 bg-light border mb-4">
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" id="consentAccuracy" required>
+                  <label class="form-check-label small" for="consentAccuracy">
+                    <strong>Information Accuracy:</strong> I confirm that all the personal and health details provided in this registration form are true and accurate to the best of my knowledge. <span class="text-danger">*</span>
+                  </label>
+                  <div class="invalid-feedback">You must confirm that your information is accurate.</div>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="consentTerms" required>
+                  <label class="form-check-label small" for="consentTerms">
+                    <strong>Terms &amp; Medical Privacy Notice:</strong> I agree to the health camp terms and consent to the collection and clinical processing of my consultation data by registered medical volunteers for preventive evaluation. <span class="text-danger">*</span>
+                  </label>
+                  <div class="invalid-feedback">You must agree to the health camp terms &amp; privacy notice.</div>
+                </div>
+              </div>
+
+              <!-- Form Action Buttons -->
+              <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 pt-2">
+                <button type="reset" id="btnResetForm" class="btn btn-outline-secondary px-4 py-2">
+                  <i class="bi bi-arrow-counterclockwise me-1"></i>Reset Form
+                </button>
+                <div class="d-flex gap-2">
+                  <a href="./index.html" class="btn btn-light border px-3 py-2">
+                    Cancel
+                  </a>
+                  <button type="submit" id="btnSubmitRegistration" class="btn btn-primary-custom px-4 py-2">
+                    <i class="bi bi-check2-circle me-1"></i>Complete Registration
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       Registration Success Modal
+       ========================================================================== -->
+  <div class="modal fade" id="registrationSuccessModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg" style="border-radius: var(--radius-lg); overflow: hidden;">
+        
+        <!-- Header -->
+        <div class="modal-header bg-success text-white py-3">
+          <div class="d-flex align-items-center gap-2">
+            <i class="bi bi-check-circle-fill fs-4"></i>
+            <h5 class="modal-title fw-bold" id="successModalLabel">Registration Successful!</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- Body: Printable Pass Content -->
+        <div class="modal-body p-4" id="printableRegistrationSlip">
+          <div class="text-center mb-4">
+            <div class="d-inline-flex p-3 rounded-circle bg-success-subtle text-success mb-2">
+              <i class="bi bi-patch-check-fill fs-1"></i>
+            </div>
+            <h4 class="fw-bold text-dark mb-1">Your Slot is Confirmed</h4>
+            <p class="text-muted small">Please present this registration pass at the registration desk upon arrival.</p>
+            
+            <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+              <span class="reg-id-badge" id="modalRegId">HC2026-0001</span>
+              <button class="btn btn-sm btn-outline-primary" id="btnCopyId" title="Copy Registration ID">
+                <i class="bi bi-clipboard"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Printable Card Details -->
+          <div class="card border rounded-3 bg-light p-3 mb-3">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <span class="text-muted small d-block">Participant Name</span>
+                <strong class="text-dark fs-6" id="modalParticipantName">John Doe</strong>
+              </div>
+              <div class="col-sm-6">
+                <span class="text-muted small d-block">Contact Number</span>
+                <strong class="text-dark fs-6" id="modalMobile">9876543210</strong>
+              </div>
+              <div class="col-sm-6">
+                <span class="text-muted small d-block">Appointment Date</span>
+                <strong class="text-primary fs-6" id="modalAppointmentDate">Nov 15, 2026</strong>
+              </div>
+              <div class="col-sm-6">
+                <span class="text-muted small d-block">Time Slot</span>
+                <strong class="text-primary fs-6" id="modalAppointmentTime">09:00 AM - 10:00 AM</strong>
+              </div>
+              <div class="col-sm-6">
+                <span class="text-muted small d-block">Selected Service</span>
+                <strong class="text-dark fs-6" id="modalService">General Health Checkup</strong>
+              </div>
+              <div class="col-sm-6">
+                <span class="text-muted small d-block">Camp Venue</span>
+                <span class="small text-secondary">Civic Community Pavilion, Main Plaza</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-3 border bg-white small text-muted">
+            <div class="fw-bold text-dark mb-1"><i class="bi bi-info-circle text-primary me-1"></i>Important Instructions:</div>
+            <ul class="mb-0 ps-3">
+              <li>Arrive 15 minutes before your scheduled appointment slot.</li>
+              <li>Bring a government photo ID and your current prescription medicines.</li>
+              <li>Fasting of 8-10 hours is advised if opting for Fasting Blood Sugar test.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div class="modal-footer bg-light border-top px-4 py-3 d-flex flex-wrap justify-content-between">
+          <button type="button" class="btn btn-outline-secondary" id="btnRegisterAnother" data-bs-dismiss="modal">
+            <i class="bi bi-person-plus me-1"></i>Register Another Participant
+          </button>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-primary-custom" id="btnPrintModalPass">
+              <i class="bi bi-printer me-1"></i>Print Slip
+            </button>
+            <a href="./lookup.html" class="btn btn-teal-custom" id="btnGoToLookup">
+              <i class="bi bi-search me-1"></i>View Registration Pass
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Footer
+       ========================================================================== -->
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <div class="d-flex align-items-center gap-2">
+          <div class="brand-icon-wrapper" style="width: 32px; height: 32px; font-size: 1rem;">
+            <i class="bi bi-hospital"></i>
+          </div>
+          <span class="text-white fw-bold">HealthCamp 2026</span>
+          <span class="text-secondary small ms-2">&copy; Community Health Initiative</span>
+        </div>
+        <div class="small text-secondary">
+          Registration entries are saved locally via browser LocalStorage.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core App JS -->
+  <script src="./js/app.js"></script>
+  <!-- Registration Specific JS -->
+  <script src="./js/registration.js"></script>
+</body>
+</html>
